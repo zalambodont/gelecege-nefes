@@ -2,69 +2,108 @@ $green: #28a661;
 $white: #fff;
 $black: #4f4f4f;
 
-body{
+body {
     font-family: 'Nexa';
     color: $black;
     background: url('../img/pattern.png') center center;
     background-size: cover
 }
-a, .row > div{
+
+a,
+.row>div {
     transition: all 0.3s ease-in-out;
 
 }
-.main-map{
+
+.main-map {
     text-align: center;
-    .tagline{
+
+    .tagline {
         display: inline-block;
         font-weight: bold;
         text-transform: uppercase;
         font-size: 24px;
         vertical-align: middle;
-        margin-left: 60px
     }
 }
+
 .breath-map {
     margin: 0 auto;
     text-align: center;
+    margin-bottom: 25px!important;
 
-    
+
     svg {
         width: 100%;
         height: auto;
-        path{
-            fill:#c2a191;
+
+        path {
+            fill: #c2a191;
             cursor: pointer;
             position: relative;
             transition: all 0.3s ease-in-out;
-            &:hover{
+
+            &:hover {
                 opacity: 0.8
             }
         }
-        text{
+
+        text {
             fill: #000;
             pointer-events: none;
             font-size: 0.75em
         }
-        .percent-{
-            @for $i from 0 through 10 { &#{$i} path {fill: #c2a191;}}
-            @for $i from 11 through 30 { &#{$i} path {fill: #97a380;}}
-            @for $i from 31 through 50 { &#{$i} path {fill: #80a379;}}
-            @for $i from 51 through 80 { &#{$i} path {fill: #68a470;}}
-            @for $i from 81 through 99 { &#{$i} path {fill: #27a369;}}
+
+        .percent- {
+            @for $i from 0 through 10 {
+                &#{$i} path {
+                    fill: #c2a191;
+                }
+            }
+
+            @for $i from 11 through 30 {
+                &#{$i} path {
+                    fill: #97a380;
+                }
+            }
+
+            @for $i from 31 through 50 {
+                &#{$i} path {
+                    fill: #80a379;
+                }
+            }
+
+            @for $i from 51 through 80 {
+                &#{$i} path {
+                    fill: #68a470;
+                }
+            }
+
+            @for $i from 81 through 99 {
+                &#{$i} path {
+                    fill: #27a369;
+                }
+            }
+
             &100 {
-                &:after{
-                    content:"";
+                &:after {
+                    content: "";
                     display: block;
                     background: url(../img/tree.svg);
                 }
-                path {fill: #00a651;}
+
+                path {
+                    fill: #00a651;
+                }
             }
         }
-      }
-  }
-  .province-detail{
+    }
+}
+
+.province-detail {
     position: absolute;
     z-index: 2;
+
     div {
         display: inline-block;
         background: #1094F6;
@@ -73,169 +112,269 @@ a, .row > div{
         -webkit-border-radius: 4px;
         -moz-border-radius: 4px;
         border-radius: 4px;
-      }
-  }
-.container-fluid{
+    }
+}
+
+.container-fluid {
     max-width: 1484px;
-    &.mt-5{
-        > .row{
+
+    &.mt-5 {
+        >.row {
             width: calc(100% - 30px);
-            margin-left:0;
-            margin-right: 0
+            margin-left: 0;
+            margin-right: 0;
+            @media (max-width: 576px) {
+                width: 100%;
+            }
+        }
+    }
+    @media (max-width: 576px) {
+        padding:0!important
+    }
+}
+
+header {
+    border-bottom: 4px solid $green;
+    height: 86px;
+    line-height: 86px;
+    background: $white;
+
+    .logo {
+        height: 54px;
+        display: inline-block;
+        vertical-align: middle;
+        position: relative;
+        top: -5px;
+
+        @media (max-width: 576px) {
+            height: 40px;
+
+        }
+    }
+
+    nav {
+        a {
+            color: $black !important;
+            font-size: 17.9px !important;
+            margin-left: 60px;
+            text-decoration: none !important;
+            border-bottom: transparent 2px solid;
+
+            &:hover {
+                border-bottom: 2px solid $green
+            }
+        }
+        @media (max-width: 576px) {
+            line-height: 20px;
+            margin-top: 25px;
+            text-align:right;
+            a{
+                margin-left: 15px;
+                font-size:14px!important;
+                display: block;
+                border-bottom:none!important;
+            }
         }
     }
 }
-  
-  header{
-      border-bottom: 4px solid $green;
-      height: 86px;
-      line-height: 86px;
-      background:$white; 
-      .logo{
-          height: 54px;
-          display: inline-block;
-          vertical-align: middle;
-          position: relative;
-          top: -5px;
-      }
-      nav{
-          a{
-              color: $black!important;
-              font-size: 17.9px!important;
-              margin-left: 60px;
-              text-decoration: none!important;
-              border-bottom:transparent 2px solid;
-              &:hover{
-                  border-bottom: 2px solid $green
-              }
-          }
-      }
-  }
 
-  .card{
-      border-radius: 0!important;
-      height: 100%;
-      border:none;
-      -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.21);
-      -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.21);
-      box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.21);
+.card {
+    border-radius: 0 !important;
+    height: 100%;
+    border: none;
+    -webkit-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.21);
+    -moz-box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.21);
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.21);
+}
+
+
+.initial {
+    -webkit-box-flex: 0 !important;
+    -ms-flex: 0 0 100% !important;
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    @media (max-width: 576px) {
+        &.col-md-8{
+            margin-bottom:65px
+        }
+        .breath-map{
+            margin-bottom: 0!important;
+        }
+    }
+}
+
+#detail {
+    display: none;
+    text-align: center;
+
+    .card {
+        padding: 25px 0;
     }
 
-  
-  .initial{
-    -webkit-box-flex: 0!important;
-    -ms-flex: 0 0 100%!important;
-    flex: 0 0 100%!important;
-    max-width: 100%!important;
-  }
-  #detail{
-      display: none;
-      text-align: center;
-      .card{
-          padding:25px 0;
-      }
-      .percent{
-          font-size:25px; 
-      }
-      ul{
-          margin-left: 0;
-          padding-left: 0;
-      }
-      figure{
-          height: 160px;
-          position: relative;
-          svg{
-             height: 150px;
-             max-width: calc(100% - 20px);
-          }
-          .tree{
-              position: absolute;
-              z-index: 2;
-              top: 30%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-              width: 50px;
-          }
-      }
-      .percent-{
-        @for $i from 0 through 10 { &#{$i} path {fill: #c2a191;}}
-        @for $i from 11 through 30 { &#{$i} path {fill: #97a380;}}
-        @for $i from 31 through 50 { &#{$i} path {fill: #80a379;}}
-        @for $i from 51 through 80 { &#{$i} path {fill: #68a470;}}
-        @for $i from 81 through 99 { &#{$i} path {fill: #27a369;}}
+    .percent {
+        font-size: 25px;
+    }
+
+    ul {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    figure {
+        height: 160px;
+        position: relative;
+
+        svg {
+            height: 150px;
+            max-width: calc(100% - 20px);
+        }
+
+        .tree {
+            position: absolute;
+            z-index: 2;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+        }
+    }
+
+    .percent- {
+        @for $i from 0 through 10 {
+            &#{$i} path {
+                fill: #c2a191;
+            }
+        }
+
+        @for $i from 11 through 30 {
+            &#{$i} path {
+                fill: #97a380;
+            }
+        }
+
+        @for $i from 31 through 50 {
+            &#{$i} path {
+                fill: #80a379;
+            }
+        }
+
+        @for $i from 51 through 80 {
+            &#{$i} path {
+                fill: #68a470;
+            }
+        }
+
+        @for $i from 81 through 99 {
+            &#{$i} path {
+                fill: #27a369;
+            }
+        }
+
         &100 {
-            &:after{
-                content:"";
+            &:after {
+                content: "";
                 display: block;
                 background: url(../img/tree.svg);
             }
-            path {fill: #00a651;}
+
+            path {
+                fill: #00a651;
+            }
         }
     }
-  }
+}
 
-  .withchild{
-    background: url(../img/child.png)  no-repeat #fff;
+.withchild {
+    background: url(../img/child.png) no-repeat #fff;
     background-position: -60px top;
     background-size: contain;
     transition: all 0.3s ease-in-out;
-      >.row{
-          height: 100%;
-      }
-      p{
-          font-size: 16.2px;
-          padding:0 15px 0 0;
+
+    >.row {
+        height: 100%;
+    }
+
+    p {
+        font-size: 16.2px;
+        padding: 0 15px 0 0;
 
         @media (max-width: 576px) {
-            padding:15px
+            padding: 15px
         }
-      }
-      a{
-         
+    }
+
+    a {
+
         @media (max-width: 576px) {
-            margin:15px;
+            margin: 15px;
             display: inline-block;
             font-size: 16px
-        } 
-      }
-  }
+        }
+    }
+    @media (max-width: 576px) {
+        background-position: top center;
+        background-size: contain;
+        background-image: url(../img/child-mobile.png);
+        padding-top: 260px;
+        position: relative;
+        margin-top: 60px;
+        .btn-rounded{
+            position: absolute;
+            top: -335px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin:0!important;
+        }
+        .col-sm-3{
+            display: none;
+        }
+        margin-bottom: -50px;
+    }
+}
 
-  .initial {
-    .withchild{
+.initial {
+    .withchild {
         background-position: left top;
-      }
-  }
+    }
+}
 
-  footer{
-      background: url(../img/trees.png) top center;
-      display: block;
-      background-size:  auto 100%;
-      width: 100%;
-      height: 324px;
-      position: relative;
-      z-index: -1;
-      margin-top: -100px
-  }
-  .btn-rounded{
-      text-transform: uppercase;
-      font-size: 16px;
-      border-radius: 100px;
-      margin: 0;
-      line-height: 46px;
-      height: 40px;
-      padding: 0 30px;
-      border: none;
-      background: $green
-  }
-
-  span.turkey{
-      font-size: 25px
-  }
-  .percent-turkey {
-    width: calc(100% - 30px);
-    margin:0 auto;
+footer {
+    background: url(../img/trees.png) top center;
+    display: block;
+    background-size: auto 100%;
+    width: 100%;
+    height: 324px;
     position: relative;
-    #turkeypercent{
+    z-index: -1;
+    margin-top: -100px;
+
+    @media (min-width:1737px) {
+        background-size: 100% auto;
+    }
+}
+
+.btn-rounded {
+    text-transform: uppercase;
+    font-size: 16px;
+    border-radius: 100px;
+    margin: 0;
+    line-height: 46px;
+    height: 40px;
+    padding: 0 30px;
+    border: none;
+    background: $green;
+}
+
+span.turkey {
+    font-size: 25px
+}
+
+.percent-turkey {
+    width: calc(100% - 30px);
+    margin: 0 auto;
+    position: relative;
+
+    #turkeypercent {
         position: absolute;
         left: 50%;
         top: 50%;
@@ -244,81 +383,138 @@ a, .row > div{
         font-size: 43px;
         font-weight: bold
     }
-    svg{
-        width: 100%;
-     }
-  }
-  
-  .numbers{
-      font-size: 18px;
-      list-style: none;
-      .bold{
-          font-weight: bold
-      }
-  }
 
-  :root {
+    svg {
+        width: 100%;
+    }
+}
+
+.numbers {
+    font-size: 18px;
+    list-style: none;
+
+    .bold {
+        font-weight: bold
+    }
+
+    @media (max-width: 576px) {
+        padding-left: 10px;
+    }
+}
+
+:root {
     --color-brand-secondary: #c2a191;
     --color-brand: #00a651;
-  }
-  .gradient__brand-secondary {
+}
+
+.gradient__brand-secondary {
     stop-color: var(--color-brand-secondary);
-  }
-  
-  .gradient__brand {
+}
+
+.gradient__brand {
     stop-color: var(--color-brand);
-  }
-  .full-height{
-      height: 100%;
-  }
-  #top-5{
-      display: none;
-      h3{
+}
+
+.full-height {
+    height: 100%;
+    @media (max-width: 576px) {
+        height: auto;
+    }
+}
+
+#top-5 {
+    display: none;
+
+    h3 {
         border-bottom: 4px solid $green;
         text-align: center;
         font-size: 25px;
         padding-top: 15px;
-      }
-      ul{
-          list-style: none;
-          padding:0;
-          margin:15px 0 0 0;
-          font-size: 16px;
-          letter-spacing: -0.5px;
-          li{
-              padding-left: 20px;
-              line-height: 30px;
-              height: 30px;
-              margin-bottom: 10px;
-              span{
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 15px 0 0 0;
+        font-size: 16px;
+        letter-spacing: -0.5px;
+
+        li {
+            padding-left: 20px;
+            line-height: 30px;
+            height: 30px;
+            margin-bottom: 10px;
+
+            span {
                 display: inline-block;
                 text-align: left;
-                &.name{
+
+                &.name {
                     width: 130px;
                 }
             }
-            .progress-holder{
+
+            .progress-holder {
                 width: calc(100% - 140px);
                 display: inline-block;
-                padding:0 10px;
+                padding: 0 10px;
                 vertical-align: middle;
                 position: relative;
-                span{
+
+                span {
                     position: absolute;
                     left: 50%;
                     top: 63%;
-                    color:$white;
+                    color: $white;
                     transform: translate(-50%, -50%);
                     font-size: 13px;
                 }
-                > div{
+
+                >div {
                     height: 20px;
                     border-radius: 20px;
-                    > div{
+
+                    >div {
                         border-radius: 0 20px 20px 0;
                     }
                 }
             }
-          }
-      }
-  }
+        }
+    }
+    @media (max-width: 576px) {
+        margin-top: 76px;
+    }
+}
+
+#form {
+    padding: 20px;
+    text-align: center;
+
+    input,
+    select {
+        border-color: $black;
+        border-radius: 0;
+        padding-bottom: 0;
+
+        &.error {
+            color: red;
+            border-color: red !important;
+        }
+    }
+
+    label.error {
+        color: red;
+        font-size: 12px;
+        margin: 0;
+        padding: 0
+    }
+
+    .message {
+        display: none;
+        font-size:14px;
+        text-align: left;
+        > div{
+            padding-bottom: 10px;
+        }
+    }
+}
