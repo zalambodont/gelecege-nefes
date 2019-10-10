@@ -1,0 +1,266 @@
+$green: #28a661;
+$white: #fff;
+$black: #4f4f4f;
+
+body{
+    font-family: 'Nexa';
+    color: $black;
+    background: url('../img/pattern.png') center center;
+    background-size: cover
+}
+a, .row > div{
+    transition: all 0.3s ease-in-out;
+
+}
+.breath-map {
+    margin: 0 auto;
+    text-align: center;
+    svg {
+        width: 100%;
+        height: auto;
+        path{
+            fill:#c2a191;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+            &:hover{
+                opacity: 0.8
+            }
+        }
+        text{
+            fill: #000;
+            pointer-events: none;
+            font-size: 0.75em
+        }
+        .percent-{
+            @for $i from 0 through 10 { &#{$i} path {fill: #c2a191;}}
+            @for $i from 11 through 30 { &#{$i} path {fill: #97a380;}}
+            @for $i from 31 through 50 { &#{$i} path {fill: #80a379;}}
+            @for $i from 51 through 80 { &#{$i} path {fill: #68a470;}}
+            @for $i from 81 through 99 { &#{$i} path {fill: #27a369;}}
+            &100 {
+                &:after{
+                    content:"";
+                    display: block;
+                    background: url(../img/tree.svg);
+                }
+                path {fill: #00a651;}
+            }
+        }
+      }
+  }
+  .province-detail{
+    position: absolute;
+    z-index: 2;
+    div {
+        display: inline-block;
+        background: #1094F6;
+        color: #fff;
+        padding: 8px 16px;
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+      }
+  }
+.container-fluid{
+    max-width: 1484px;
+    &.mt-5{
+        > .row{
+            width: calc(100% - 30px);
+            margin-left:0;
+            margin-right: 0
+        }
+    }
+}
+  
+  header{
+      border-bottom: 4px solid $green;
+      height: 86px;
+      line-height: 86px;
+      background:$white; 
+      .logo{
+          height: 37px;
+          display: inline-block;
+          vertical-align: middle;
+          position: relative;
+          top: -5px;
+      }
+      .tagline{
+          display: inline-block;
+          font-weight: bold;
+          text-transform: uppercase;
+          font-size: 24px;
+          vertical-align: middle;
+          margin-left: 60px
+      }
+      nav{
+          a{
+              color: $black!important;
+              font-size: 17.9px!important;
+              margin-left: 60px;
+              text-decoration: none!important;
+              border-bottom:transparent 2px solid;
+              &:hover{
+                  border-bottom: 2px solid $green
+              }
+          }
+      }
+  }
+
+  .card{
+      border-radius: 0!important;
+      height: 100%;
+      border:none;
+      -webkit-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.21);
+      -moz-box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.21);
+      box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.21);
+    }
+
+  
+  .initial{
+    -webkit-box-flex: 0!important;
+    -ms-flex: 0 0 100%!important;
+    flex: 0 0 100%!important;
+    max-width: 100%!important;
+  }
+  #detail{
+      display: none;
+      text-align: center;
+      .percent{
+          font-size:25px; 
+      }
+      ul{
+          margin-left: 0;
+          padding-left: 0;
+      }
+      figure{
+          height: 200px;
+          position: relative;
+          svg{
+             height: 150px;
+          }
+          .tree{
+              position: absolute;
+              z-index: 2;
+              top: 30%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 50px;
+          }
+      }
+      .percent-{
+        @for $i from 0 through 10 { &#{$i} path {fill: #c2a191;}}
+        @for $i from 11 through 30 { &#{$i} path {fill: #97a380;}}
+        @for $i from 31 through 50 { &#{$i} path {fill: #80a379;}}
+        @for $i from 51 through 80 { &#{$i} path {fill: #68a470;}}
+        @for $i from 81 through 99 { &#{$i} path {fill: #27a369;}}
+        &100 {
+            &:after{
+                content:"";
+                display: block;
+                background: url(../img/tree.svg);
+            }
+            path {fill: #00a651;}
+        }
+    }
+  }
+
+  .withchild{
+      >.row{
+          height: 100%
+      }
+      figure{
+          height: calc(100% + 30px);
+          overflow: hidden;
+          display: block;
+          margin:0;
+          margin-top: -30px;
+          position: relative;
+        img.child{
+            width: 323px;
+            height: auto;
+            position: absolute;
+        }
+        @media (max-width: 576px) {
+            min-height: 300px
+        }
+      }
+      p{
+          font-size: 16.42px;
+
+        @media (max-width: 576px) {
+            padding:15px
+        }
+      }
+      a{
+         
+        @media (max-width: 576px) {
+            margin:15px;
+            display: inline-block;
+            font-size: 16px
+        } 
+      }
+  }
+
+  footer{
+      background: url(../img/trees.png) top center;
+      display: block;
+      background-size:  auto 100%;
+      width: 100%;
+      height: 324px;
+      position: relative;
+      z-index: -1;
+      margin-top: -100px
+  }
+  .btn-rounded{
+      text-transform: uppercase;
+      font-size: 18px;
+      border-radius: 100px;
+      margin: 0;
+      line-height: 46px;
+      height: 40px;
+      padding: 0 30px;
+      border: none;
+      background: $green
+  }
+
+  span.turkey{
+      font-size: 25px
+  }
+  .percent-turkey {
+    width: calc(100% - 30px);
+    margin:0 auto;
+    position: relative;
+    #turkeypercent{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: $white;
+        font-size: 43px;
+        font-weight: bold
+    }
+    svg{
+        width: 100%;
+     }
+  }
+  
+  .numbers{
+      font-size: 18px;
+      list-style: none;
+      .bold{
+          font-weight: bold
+      }
+  }
+
+  :root {
+    --color-brand-secondary: #c2a191;
+    --color-brand: #00a651;
+  }
+  .gradient__brand-secondary {
+    stop-color: var(--color-brand-secondary);
+  }
+  
+  .gradient__brand {
+    stop-color: var(--color-brand);
+  }
