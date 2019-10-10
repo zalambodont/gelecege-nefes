@@ -4,14 +4,14 @@
         "2": "35",
         "3": "06",
         "4": "53",
-        "5": "01"
+        "5": "03"
     },
     "places": {
         "01": {
             "name": "Adana",
             "target": 1000,
             "completed": 500,
-            "percent": 1
+            "percent": 50
         },
         "02": {
             "name": "Ad\u0131yaman",
@@ -20,10 +20,10 @@
             "percent": 2
         },
         "03": {
-            "name": "Afyon",
+            "name": "Afyonkarahisar",
             "target": 1000,
             "completed": 500,
-            "percent": 3
+            "percent": 60
         },
         "04": {
             "name": "A\u011fr\u0131",
@@ -41,7 +41,7 @@
             "name": "Ankara",
             "target": 1000,
             "completed": 500,
-            "percent": 6
+            "percent": 80
         },
         "07": {
             "name": "Antalya",
@@ -209,13 +209,13 @@
             "name": "\u0130stanbul",
             "target": 1000,
             "completed": 500,
-            "percent": 34
+            "percent": 100
         },
         "35": {
             "name": "\u0130zmir",
             "target": 1000,
             "completed": 500,
-            "percent": 45
+            "percent": 90
         },
         "36": {
             "name": "Kars",
@@ -323,7 +323,7 @@
             "name": "Rize",
             "target": 1000,
             "completed": 500,
-            "percent": 53
+            "percent": 70
         },
         "54": {
             "name": "Sakarya",

@@ -49,12 +49,14 @@ $(document).ready(function () {
   $.get('a/js/data.json',
     function (data, textStatus, jqXHR) {
       const province = data.places
+      const top5 = data.top
       $.each(province, function (key, value) {
         $('[data-id=' + key + ']').attr('class', 'percent-' + value.percent);
         $('[data-id=' + key + ']').attr('data-target', value.target)
         $('[data-id=' + key + ']').attr('data-completed', value.completed)
         $('[data-id=' + key + ']').attr('data-percent', '%' + value.percent)
         $('[data-id=' + key + ']').attr('data-valuekey', value.percent)
+        $('[data-id=' + key + ']').attr('data-name', value.name)
       });
       $('#target').html(province[100].target)
       $('#completed').html(province[100].completed)
@@ -66,11 +68,17 @@ $(document).ready(function () {
         $('#startColor').attr("offset", "100%")
         $('#endColor').attr("offset", "100%")
       }
+
+      $.each(top5, function(key, value){
+        console.log(key, value)
+        $('#top-5 ul').append(
+          '<li><span class="name">'+province[value].name+'</span>:<div class="progress-holder"><div class="progress"><div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: '+province[value].percent+'%" aria-valuenow="'+province[value].percent+'" aria-valuemin="0" aria-valuemax="100"></div></div><span>%'+province[value].percent+'</span></div></li>'
+        )
+      })
     });
   $(document).on("click", "#joinCTA", function () {
     if ($('.initial').length) {
       $('.initial').removeClass('initial')
-      console.log('labada')
       setTimeout(() => {
         $('#top-5').show()
         $('#province-detail').hide()

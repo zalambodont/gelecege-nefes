@@ -12,9 +12,22 @@ a, .row > div{
     transition: all 0.3s ease-in-out;
 
 }
+.main-map{
+    text-align: center;
+    .tagline{
+        display: inline-block;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 24px;
+        vertical-align: middle;
+        margin-left: 60px
+    }
+}
 .breath-map {
     margin: 0 auto;
     text-align: center;
+
+    
     svg {
         width: 100%;
         height: auto;
@@ -79,19 +92,11 @@ a, .row > div{
       line-height: 86px;
       background:$white; 
       .logo{
-          height: 37px;
+          height: 54px;
           display: inline-block;
           vertical-align: middle;
           position: relative;
           top: -5px;
-      }
-      .tagline{
-          display: inline-block;
-          font-weight: bold;
-          text-transform: uppercase;
-          font-size: 24px;
-          vertical-align: middle;
-          margin-left: 60px
       }
       nav{
           a{
@@ -141,6 +146,7 @@ a, .row > div{
           position: relative;
           svg{
              height: 150px;
+             max-width: calc(100% - 20px);
           }
           .tree{
               position: absolute;
@@ -169,28 +175,12 @@ a, .row > div{
   }
 
   .withchild{
+    background: url(../img/child.png)  no-repeat #fff;
+    background-position: -60px top;
+    background-size: contain;
+    transition: all 0.3s ease-in-out;
       >.row{
           height: 100%;
-          padding-bottom: 15px;
-          padding-top: 15px;
-      }
-      figure{
-          height: calc(100% + 60px);
-          overflow: hidden;
-          width: 323px;
-          display: block;
-          margin:0;
-          margin-top: -45px;
-          position: relative;
-        img.child{
-            transition: all 0.3s ease-in-out;
-            height: auto;
-            position: absolute;
-            right: 110px;
-        }
-        @media (max-width: 576px) {
-            min-height: 300px
-        }
       }
       p{
           font-size: 16.2px;
@@ -212,12 +202,7 @@ a, .row > div{
 
   .initial {
     .withchild{
-        figure{
-          img.child{
-              right: 10px;
-          }
-        }
-        
+        background-position: left top;
       }
   }
 
@@ -288,4 +273,52 @@ a, .row > div{
   }
   #top-5{
       display: none;
+      h3{
+        border-bottom: 4px solid $green;
+        text-align: center;
+        font-size: 25px;
+        padding-top: 15px;
+      }
+      ul{
+          list-style: none;
+          padding:0;
+          margin:15px 0 0 0;
+          font-size: 16px;
+          letter-spacing: -0.5px;
+          li{
+              padding-left: 20px;
+              line-height: 30px;
+              height: 30px;
+              margin-bottom: 10px;
+              span{
+                display: inline-block;
+                text-align: left;
+                &.name{
+                    width: 130px;
+                }
+            }
+            .progress-holder{
+                width: calc(100% - 140px);
+                display: inline-block;
+                padding:0 10px;
+                vertical-align: middle;
+                position: relative;
+                span{
+                    position: absolute;
+                    left: 50%;
+                    top: 63%;
+                    color:$white;
+                    transform: translate(-50%, -50%);
+                    font-size: 13px;
+                }
+                > div{
+                    height: 20px;
+                    border-radius: 20px;
+                    > div{
+                        border-radius: 0 20px 20px 0;
+                    }
+                }
+            }
+          }
+      }
   }
