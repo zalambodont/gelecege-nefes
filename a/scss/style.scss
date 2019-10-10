@@ -126,6 +126,9 @@ a, .row > div{
   #detail{
       display: none;
       text-align: center;
+      .card{
+          padding:25px 0;
+      }
       .percent{
           font-size:25px; 
       }
@@ -134,7 +137,7 @@ a, .row > div{
           padding-left: 0;
       }
       figure{
-          height: 200px;
+          height: 160px;
           position: relative;
           svg{
              height: 150px;
@@ -167,26 +170,31 @@ a, .row > div{
 
   .withchild{
       >.row{
-          height: 100%
+          height: 100%;
+          padding-bottom: 15px;
+          padding-top: 15px;
       }
       figure{
-          height: calc(100% + 30px);
+          height: calc(100% + 60px);
           overflow: hidden;
+          width: 323px;
           display: block;
           margin:0;
-          margin-top: -30px;
+          margin-top: -45px;
           position: relative;
         img.child{
-            width: 323px;
+            transition: all 0.3s ease-in-out;
             height: auto;
             position: absolute;
+            right: 110px;
         }
         @media (max-width: 576px) {
             min-height: 300px
         }
       }
       p{
-          font-size: 16.42px;
+          font-size: 16.2px;
+          padding:0 15px 0 0;
 
         @media (max-width: 576px) {
             padding:15px
@@ -202,6 +210,17 @@ a, .row > div{
       }
   }
 
+  .initial {
+    .withchild{
+        figure{
+          img.child{
+              right: 10px;
+          }
+        }
+        
+      }
+  }
+
   footer{
       background: url(../img/trees.png) top center;
       display: block;
@@ -214,7 +233,7 @@ a, .row > div{
   }
   .btn-rounded{
       text-transform: uppercase;
-      font-size: 18px;
+      font-size: 16px;
       border-radius: 100px;
       margin: 0;
       line-height: 46px;
@@ -263,4 +282,10 @@ a, .row > div{
   
   .gradient__brand {
     stop-color: var(--color-brand);
+  }
+  .full-height{
+      height: 100%;
+  }
+  #top-5{
+      display: none;
   }
