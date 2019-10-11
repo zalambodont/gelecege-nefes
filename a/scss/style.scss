@@ -123,6 +123,7 @@ a,
             width: calc(100% - 30px);
             margin-left: 0;
             margin-right: 0;
+            margin-bottom: 0!important;
             @media (max-width: 576px) {
                 width: 100%;
             }
@@ -174,6 +175,12 @@ header {
                 display: block;
                 border-bottom:none!important;
             }
+        }
+    }
+    @media (max-width: 576px) {
+        .container-fluid{
+            padding-left: 15px!important;
+            padding-right: 15px!important;
         }
     }
 }

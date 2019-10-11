@@ -20,6 +20,7 @@ $(document).ready(function () {
       $('#province-detail figure').html('')
       $('#province-detail figure').prepend('<img src="' + url + '" />')
       var $img = jQuery('#detail figure img');
+      $('#join').show()
 
       jQuery.get(url, function (data) {
         var $svg = jQuery(data).find('svg');
@@ -27,6 +28,7 @@ $(document).ready(function () {
         $img.replaceWith($svg);
         if (valuekey === 100) {
           $('#province-detail figure').append('<img src="a/img/tree.svg" class="tree" />')
+          $('#join').hide()
         }
       }, 'xml');
       if ($('.initial').length) {
@@ -119,18 +121,21 @@ $(document).ready(function () {
     $("#province option[value="+$(this).attr('data-selected')+"]").attr('selected', 'selected');
     return false
   });
+
+  $(document).on("click", "#complete", function () {
+    $('#form').hide()
+    $('#province-detail').show()
+    return false
+  });
+
   $.getScript("a/js/tr.js");
 
-  $('#sbmt').on('click', function () {
-    $('#form form').submit();
-  });
   $("#form form").validate({
     rules: {
       name: "required",
       email: "required",
       province: "required",
     },
-
     submitHandler: function () {
       var $form = $("#form form");
 
@@ -152,17 +157,21 @@ $(document).ready(function () {
         url: "localhost",
         data: JSON.stringify(obj),
         success: function (res) {
-          
         }
       })
-      /* BURAYI SİLİYORUZ SADECE MOCKUP İÇİN */
-      const res = {"name": obj.name, "area": "Adana / Sarıçam / Gökbuket mahallesi / Orman Arazisine Ait Ağaçlandırma Alanı"}
-      $('#form .message .name').html(res.name)
-      $('#form .message .area').html(res.area)
-      $('#form form').hide()
-      $('#form .message').show()
-      /* BURAYI SİLİYORUZ SADECE MOCKUP İÇİN */
+            /* BURAYI SİLİYORUZ SADECE MOCKUP İÇİN */
+            const res = {"name": obj.name, "area": "Adana / Sarıçam / Gökbuket mahallesi / Orman Arazisine Ait Ağaçlandırma Alanı", "placeToAdd": obj.province}
+            const lastCompleted = $('[data-id=' + res.placeToAdd + ']').attr('data-completed')
+            const curCompleted = parseInt(lastCompleted, 10) + 5
+            $('[data-id=' + res.placeToAdd + ']').attr('data-completed',curCompleted)
+            $('#province-detail .completed').html(curCompleted)
+            $('#form .message .name').html(res.name)
+            $('#form .message .area').html(res.area)
+            $('#form form').hide()
+            $('#form .message').show()
+            /* BURAYI SİLİYORUZ SADECE MOCKUP İÇİN */
       return false; 
+      
     }
   });
 })
