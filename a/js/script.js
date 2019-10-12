@@ -104,7 +104,7 @@ $(document).ready(function () {
         )
       })
     });
-  $(document).on("click", "#joinCTA", function () {
+  $(document).on("click", ".joinCTA", function () {
     if ($('.initial').length) {
       $('.initial').removeClass('initial')
       setTimeout(() => {

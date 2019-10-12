@@ -126,6 +126,7 @@ a,
             margin-bottom: 0!important;
             @media (max-width: 576px) {
                 width: 100%;
+                margin-bottom: 15px!important;
             }
         }
     }
@@ -201,9 +202,6 @@ header {
     flex: 0 0 100% !important;
     max-width: 100% !important;
     @media (max-width: 576px) {
-        &.col-md-8{
-            margin-bottom:65px
-        }
         .breath-map{
             margin-bottom: 0!important;
         }
@@ -324,18 +322,9 @@ header {
         background-image: url(../img/child-mobile.png);
         padding-top: 260px;
         position: relative;
-        margin-top: 60px;
-        .btn-rounded{
-            position: absolute;
-            top: -335px;
-            left: 50%;
-            transform: translateX(-50%);
-            margin:0!important;
-        }
         .col-sm-3{
             display: none;
         }
-        margin-bottom: -50px;
     }
 }
 
@@ -489,7 +478,7 @@ span.turkey {
         }
     }
     @media (max-width: 576px) {
-        margin-top: 76px;
+        margin-top: 15px;
     }
 }
 
@@ -534,5 +523,18 @@ span.turkey {
         > div, >div > div, iframe{
             width: 100%!important;
         }
+    }
+}
+
+.show-desktop{
+    @media (max-width:576px) {
+        display: none!important;
+    }
+}
+.show-mobile{
+    display:none;
+    @media (max-width:576px) {
+        display: inline-block!important;
+        margin: 30px auto;
     }
 }
