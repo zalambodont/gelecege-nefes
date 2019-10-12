@@ -9,9 +9,9 @@
   <link rel="icon" href="a/img/favicon.png" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
   <link href="a/font/font.css" rel="stylesheet" />
   <link href="a/css/style.css" rel="stylesheet" />
+	<script src="//www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -403,7 +403,8 @@
                   <text x="175" y="200">Kütahya</text>
                   <text x="620" y="270">Malatya</text>
                   <text x="95" y="235">Manisa</text>
-                  <text x="550" y="310">Kahraman-</text><text x="565" y="325">maraş</text>
+                  <text x="550" y="310">Kahraman-</text>
+                  <text x="565" y="325">maraş</text>
                   <text x="770" y="341">Mardin</text>
                   <text x="90" y="340">Muğla</text>
                   <text x="823" y="228">Muş</text>
@@ -439,7 +440,6 @@
                   <text x="580" y="390">Kilis</text>
                   <text x="520" y="345">Osmaniye</text>
                   <text x="270" y="95">Düzce</text>
-
                 </g>
               </g>
             </svg>
@@ -452,17 +452,15 @@
               <figure>
               </figure>
               <span class="percent">Katılım Durumu <strong></strong></span>
-
               <ul class="numbers mt-3">
                 <li>
-                  Hefeflenen Fidan: <span class="bold target">11.000.000</span>
+                  Hefeflenen Fidan: <span class="bold target"></span>
                 </li>
                 <li>
-                  Sahiplenilen Fidan: <span class="bold completed">5.172.455</span>
+                  Sahiplenilen Fidan: <span class="bold completed"></span>
                 </li>
               </ul>
               <a href="#hemen-katil" class="btn btn-success btn-rounded" id="join">Katıl</a>
-
             </div>
             <div id="form">
               <form>
@@ -479,7 +477,7 @@
                 </div>
                 <div class="form-group">
                   <div class="recaptcha">
-                    <img src="a/img/recaptcha.png" alt="Dummy Recaptcha">
+							<div class="g-recaptcha" data-theme="light" data-sitekey="6LdPOr0UAAAAAOil0q1Az4SxPVxsE5z48QWg8g1B"></div>
                   </div>
                 </div>
                 <button type="submit" class="btn btn-success btn-rounded" id="sbmt">Katıl</button>

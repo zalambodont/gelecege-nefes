@@ -60,7 +60,7 @@ $(document).ready(function () {
         $('[data-id=' + key + ']').attr('data-valuekey', value.percent)
         $('[data-id=' + key + ']').attr('data-name', value.name)
         if(parseInt(key, 10) !==100){
-          arr.push({t:value.name, v:key})
+          arr.push({t:value.name, v:key, percent: value.percent})
         }
       });
       function turkcesiralama(a, b){
@@ -80,7 +80,12 @@ $(document).ready(function () {
     } 
       arr.sort(turkcesiralama);
       $.each(arr, function (key, i) {
-        $('#province').append('<option value="'+i.v+'">'+i.t+'</option>')
+        if(i.percent !== 100){
+          $('#province').append('<option value="'+i.v+'">'+i.t+'</option>')
+        }
+        else{
+          $('#province').append('<option value="'+i.v+'" disabled>'+i.t+'</option>')
+        }
       });
       $('#target').html(province[100].target)
       $('#completed').html(province[100].completed)

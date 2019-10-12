@@ -525,3 +525,14 @@ span.turkey {
         }
     }
 }
+
+.recaptcha{
+    display: block;
+    width: 100%;
+    .g-recaptcha{
+        width: 100%;
+        > div, >div > div, iframe{
+            width: 100%!important;
+        }
+    }
+}
