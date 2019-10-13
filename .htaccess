@@ -1,0 +1,12 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteBase /
+
+RewriteRule ^p$ post.php [L]
+RewriteRule ^p/$ post.php [L]
+
+RewriteRule ^j$ json.php [L]
+RewriteRule ^j/$ json.php [L]
