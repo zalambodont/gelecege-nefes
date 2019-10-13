@@ -419,7 +419,6 @@ span.turkey {
 }
 
 #top-5 {
-    display: none;
 
     h3 {
         border-bottom: 4px solid $green;
@@ -476,9 +475,6 @@ span.turkey {
                 }
             }
         }
-    }
-    @media (max-width: 576px) {
-        margin-top: 15px;
     }
 }
 
