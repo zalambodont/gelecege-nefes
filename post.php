@@ -97,8 +97,12 @@ if(substr(parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST), 0-strlen($_SERVER['
 				$updateIl = $db->prepare("UPDATE `iller` SET `durum` = `durum` + 5 WHERE `id` = :id");
 				$updateIl->execute(array(':id' => $data['province']));
 
+				/* Türkiye durum güncelleme işlemi */
+				$updateTurkiye = $db->prepare("UPDATE `iller` SET `durum` = `durum` + 5 WHERE `id` = :id");
+				$updateTurkiye->execute(array(':id' => 100));
+
 				/* Tüm veritabanı işlemleri tamamsa olumlu yanıt hazırlanıyor */
-				if($updateIl && $insert && $updateBolge)
+				if($updateTurkiye && $updateIl && $insert && $updateBolge)
 				{
 					$array['result'] = true;
 					$array['name'] = $data['name'];

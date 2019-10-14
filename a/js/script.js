@@ -58,6 +58,9 @@ $(document).ready(function () {
 			$('[data-id=' + key + ']').attr('data-percent', '%' + value.percent)
 			$('[data-id=' + key + ']').attr('data-valuekey', value.percent)
 			$('[data-id=' + key + ']').attr('data-name', value.name)
+			if (parseInt(value.percent, 10) === 100) {
+				$('[data-vid=' + key + '] tspan').prepend('🌲')
+			}
 			if (parseInt(key, 10) !== 100) {
 				arr.push({
 					t: value.name,
@@ -142,11 +145,19 @@ $(document).ready(function () {
 		return false
 	});
 
+	$(document).on('click', '#back', function () {
+		$('#form form').show()
+		$('#form form input[type="email"]').addClass("error")
+		$('#form div.error').hide()
+		grecaptcha.reset();
+		return false
+	});
+
 	$.getScript('/a/js/tr.js');
-	jQuery.validator.addMethod("emailordomain", function(value, element) {
+	jQuery.validator.addMethod("emailordomain", function (value, element) {
 		return this.optional(element) || /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(value) || /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/.test(value);
-	  }, "Lütfen geçerli bir e-posta adresi giriniz.");
-	  
+	}, "Lütfen geçerli bir e-posta adresi giriniz.");
+
 	$('#form form').validate({
 		rules: {
 			name: {
@@ -182,29 +193,25 @@ $(document).ready(function () {
 				data: JSON.stringify(obj),
 				success: function (data) {
 					JSON.stringify(data)
-					if(data.result==true)
-					{
-						// alert('oldu.');
-			/* BURAYI SİLİYORUZ SADECE MOCKUP İÇİN */
-			const res = {
-				'name': data.name,
-				'area': data.area,
-				'placeToAdd': data.province
-			}
-			const lastCompleted = $('[data-id=' + res.placeToAdd + ']').attr('data-completed')
-			const curCompleted = parseInt(lastCompleted, 10) + 5
-			$('[data-id=' + res.placeToAdd + ']').attr('data-completed', curCompleted)
-			$('#province-detail .completed').html(curCompleted)
-			$('#form .message .name').html(res.name)
-			$('#form .message .area').html(res.area)
-			$('#form form').hide()
-			$('#form .message').show()
-			/* BURAYI SİLİYORUZ SADECE MOCKUP İÇİN */
-					}
-					else if(data.result==false)
-					{
-						$('#form .message .area').html(data.message)
-						// alert('olmadı: ' + data.message);
+					if (data.result == true) {
+						const res = {
+							'name': data.name,
+							'area': data.area,
+							'placeToAdd': data.province
+						}
+						const lastCompleted = $('[data-id=' + res.placeToAdd + ']').attr('data-completed')
+						const curCompleted = parseInt(lastCompleted, 10) + 5
+						$('[data-id=' + res.placeToAdd + ']').attr('data-completed', curCompleted)
+						$('#province-detail .completed').html(curCompleted)
+						$('#form .message .name').html(res.name)
+						$('#form .message .area').html(res.area)
+						$('#form form').hide()
+						$('#form .message').show()
+					} else if (data.result == false) {
+						console.log(data.message)
+						$('#form .error span').html(data.message)
+						$('#form form').hide()
+						$('#form .error').show()
 					}
 				}
 			})
