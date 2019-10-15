@@ -1,13 +1,17 @@
 <?php
 include('app/db.php');
-$min = 21;
+$min = 19;
 $max = 31;
+
+function roundUpToAny($n, $x = 5) {
+	return (ceil($n)%$x === 0) ? ceil($n) : round(($n+$x/2)/$x)*$x;
+}
 
 $sqlIller = $db->query("SELECT * FROM `iller`");
 while($il = $sqlIller->fetch(PDO::FETCH_ASSOC))
 {
 	$istenenYuzde = rand($min, $max);
-	$ekDurum = ($il['hedef']/100)*$istenenYuzde;
+	$ekDurum = roundUpToAny(($il['hedef']/100)*$istenenYuzde);
 
 	$yuzde = ($il['durum']*100)/$il['hedef'];
 

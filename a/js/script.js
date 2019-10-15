@@ -59,7 +59,7 @@ $(document).ready(function () {
 			$('[data-id=' + key + ']').attr('data-valuekey', value.percent)
 			$('[data-id=' + key + ']').attr('data-name', value.name)
 			if (parseInt(value.percent, 10) === 100) {
-				$('[data-vid=' + key + '] tspan').prepend('🌲')
+				$('[data-vid=' + key + '] tspan').prepend('🌳')
 			}
 			if (parseInt(key, 10) !== 100) {
 				arr.push({
@@ -85,14 +85,16 @@ $(document).ready(function () {
 				}
 			}
 		}
+
 		arr.sort(turkcesiralama);
 		$.each(arr, function (key, i) {
 			if (i.percent !== 100) {
 				$('#province').append('<option value="' + i.v + '">' + i.t + '</option>')
 			} else {
-				$('#province').append('<option value="' + i.v + '" disabled>' + i.t + '</option>')
+				$('#province').append('<option value="' + i.v + '" disabled>' + '🌳 ' + i.t + '</option>')
 			}
 		});
+
 		$('#target').html(province[100].target)
 		$('#completed').html(province[100].completed)
 		$('#turkeypercent').html('%' + province[100].percent)
@@ -105,9 +107,15 @@ $(document).ready(function () {
 		}
 
 		$.each(top5, function (key, value) {
-			$('#top-5 ul').append(
-				'<li><span class="name">' + province[value].name + '</span>:<div class="progress-holder"><div class="progress"><div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: ' + province[value].percent + '%" aria-valuenow="' + province[value].percent + '" aria-valuemin="0" aria-valuemax="100"></div></div><span>%' + province[value].percent + '</span></div></li>'
-			)
+			var topItem = '<li>' + 
+					'<span class="name">' + province[value].name + '</span>:' + 
+					'<div class="progress-holder">' + 
+						'<div class="progress"><div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: ' + province[value].percent + '%" aria-valuenow="' + province[value].percent + '" aria-valuemin="0" aria-valuemax="100"></div></div>';
+			if(province[value].percent<60) { topItem = topItem + '<span style="color:#c2a191">%' + province[value].percent + '</span>'; }
+			else { topItem = topItem + '<span>%' + province[value].percent + '</span>'; }
+					'</div>' + 
+				'</li>';
+			$('#top-5 ul').append(topItem)
 		})
 	});
 
@@ -184,6 +192,7 @@ $(document).ready(function () {
 				});
 				return indexed_array;
 			}
+
 			var obj = getFormData($form);
 			$.ajax({
 				type: 'POST',
