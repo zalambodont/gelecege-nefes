@@ -350,14 +350,12 @@ header {
         }
 
         @media(max-width: 576px) {
-            figure {
-                margin: 0;
+            margin: 0;
                 padding: 1rem 1rem 0 1rem !important;
 
                 img {
                     margin-bottom: 20px;
                 }
-            }
         }
     }
 
@@ -388,7 +386,6 @@ header {
         background-position: top center;
         background-size: contain;
         background-image: url(../img/child-mobile.png);
-        padding-top: 260px;
         position: relative;
 
         .col-sm-3 {
