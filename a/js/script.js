@@ -192,7 +192,7 @@ $(document).ready(function() {
 	$(document).on('click', '#join', function () {
 		$('#form').show()
 		$('#province-detail').hide()
-		$('#province option[value=' + $(this).attr('data-selected') + ']').attr('selected', 'selected');
+		$('#province option[value=' + $(this).attr('data-selected') + ']').prop('selected', true);
 		return false
 	});
 
