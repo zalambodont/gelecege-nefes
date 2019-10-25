@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	setInterval(() => {
+	function init() {
 		
 	/* Haritadaki il üzerine tıklama işlemi */
 	$(document).on('click', '#breath-map path', function () {
@@ -306,7 +306,11 @@ $(document).ready(function() {
 			return false;
 		}
 	});
+	}
+	setInterval(() => {
+		init()
 	}, 60000);
+	init()
 })
 
 function numberWithCommas(x) {
