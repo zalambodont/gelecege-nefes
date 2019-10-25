@@ -1,5 +1,6 @@
 $(document).ready(function() {
-
+	setInterval(() => {
+		
 	/* Haritadaki il üzerine tıklama işlemi */
 	$(document).on('click', '#breath-map path', function () {
 		const parent = $(this).parent();
@@ -109,6 +110,7 @@ $(document).ready(function() {
 		}
 
 		/* Top 5 listeleme */
+		$('#top-5 ul').html('')
 		$.each(top5, function(key, value) {
 			var topItem = '<li>' + 
 					'<span class="name">' + province[value].name + '</span>:' + 
@@ -153,7 +155,7 @@ $(document).ready(function() {
 
 			array.sort(turkcesiralama);
 			$.each(array, function(key, i) {
-				$('#pProvince').append('<option value="' + i.id + '">' + i.name + '</option>')
+				$('#pProvince').html('').append('<option value="' + i.id + '">' + i.name + '</option>')
 			});
 		});
 	});
@@ -167,7 +169,7 @@ $(document).ready(function() {
 		/* O ilin tören alanları */
 		$('#areas').show();
 		$.each(areas, function(key, value) {
-			$('#areas ul').append('<li>' + value.ilce + ' / ' + value.mahalle + ' / ' + value.bolge + '</li>')
+			$('#areas ul').html('').append('<li>' + value.ilce + ' / ' + value.mahalle + ' / ' + value.bolge + '</li>')
 		})
 
 	});
@@ -304,6 +306,7 @@ $(document).ready(function() {
 			return false;
 		}
 	});
+	}, 60000);
 })
 
 function numberWithCommas(x) {
