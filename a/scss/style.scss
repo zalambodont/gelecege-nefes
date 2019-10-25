@@ -365,12 +365,10 @@ header {
         margin-bottom: 9px;
 
         @media(max-width: 576px) {
-            padding: 25px;
+            padding: 5px 25px;
+
         }
 
-        @media (max-width: 400px) {
-            padding: 15px
-        }
     }
 
     a {
