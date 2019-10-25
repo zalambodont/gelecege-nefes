@@ -1,5 +1,6 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
+	/* Haritadaki il üzerine tıklama işlemi */
 	$(document).on('click', '#breath-map path', function () {
 		const parent = $(this).parent();
 		const className = $(parent).attr('class');
@@ -46,22 +47,22 @@ $(document).ready(function () {
 		}
 	});
 
-
-	$.get('/j', function (data, textStatus, jqXHR) {
+	/* İller ve durumları Listeleniyor */
+	$.get('/j', function(data, textStatus, jqXHR) {
 		const province = data.places
 		const top5 = data.top
 		const arr = []
-		$.each(province, function (key, value) {
+		$.each(province, function(key, value) {
 			$('[data-id=' + key + ']').attr('class', 'percent-' + value.percent);
 			$('[data-id=' + key + ']').attr('data-target', value.target)
 			$('[data-id=' + key + ']').attr('data-completed', value.completed)
 			$('[data-id=' + key + ']').attr('data-percent', '%' + value.percent)
 			$('[data-id=' + key + ']').attr('data-valuekey', value.percent)
 			$('[data-id=' + key + ']').attr('data-name', value.name)
-			if (parseInt(value.percent, 10) === 100) {
-				$('[data-vid=' + key + '] tspan').prepend('🌳')
+			if(parseInt(value.percent, 10) === 100) {
+				$('[data-vid=' + key + '] tspan').prepend('&#x1F332;')
 			}
-			if (parseInt(key, 10) !== 100) {
+			if(parseInt(key, 10) !== 100) {
 				arr.push({
 					t: value.name,
 					v: key,
@@ -77,7 +78,7 @@ $(document).ready(function () {
 			if (atitle.length === 0 || btitle.length === 0) {
 				return atitle.length - btitle.length;
 			}
-			for (var i = 0; i < atitle.length && i < btitle.length; i++) {
+			for(var i = 0; i < atitle.length && i < btitle.length; i++) {
 				var ai = alfabe.indexOf(atitle[i]);
 				var bi = alfabe.indexOf(btitle[i]);
 				if (ai !== bi) {
@@ -87,14 +88,15 @@ $(document).ready(function () {
 		}
 
 		arr.sort(turkcesiralama);
-		$.each(arr, function (key, i) {
+		$.each(arr, function(key, i) {
 			if (i.percent !== 100) {
 				$('#province').append('<option value="' + i.v + '">' + i.t + '</option>')
 			} else {
-				$('#province').append('<option value="' + i.v + '" disabled>' + '🌳 ' + i.t + '</option>')
+				$('#province').append('<option value="' + i.v + '" disabled>' + '&#x1F332; ' + i.t + '</option>')
 			}
 		});
 
+		/* Türkiye geneli */
 		$('#target').html(province[100].target)
 		$('#completed').html(province[100].completed)
 		$('#turkeypercent').html('%' + province[100].percent)
@@ -106,7 +108,8 @@ $(document).ready(function () {
 			$('#endColor').attr('offset', '100%')
 		}
 
-		$.each(top5, function (key, value) {
+		/* Top 5 listeleme */
+		$.each(top5, function(key, value) {
 			var topItem = '<li>' + 
 					'<span class="name">' + province[value].name + '</span>:' + 
 					'<div class="progress-holder">' + 
@@ -117,6 +120,56 @@ $(document).ready(function () {
 				'</li>';
 			$('#top-5 ul').append(topItem)
 		})
+	});
+
+	/* Tören alanları listeleniyor */
+	$(document).on('click', '#torenButton', function () {
+		$.get('/t', function(data, textStatus, jqXHR) {
+			window.data = data;
+			const places = data.places
+			const array = []
+			$.each(places, function(key, value) {
+				array.push({
+					id: key,
+					name: value.name
+				})
+			});
+
+			function turkcesiralama(a, b) {
+				var atitle = a.id;
+				var btitle = b.name;
+				var alfabe = 'AaBbCcÇçDdEeFfGgĞğHhIıİiJjKkLlMmNnOoÖöPpQqRrSsŞşTtUuÜüVvWwXxYyZz0123456789';
+				if (atitle.length === 0 || btitle.length === 0) {
+					return atitle.length - btitle.length;
+				}
+				for(var i = 0; i < atitle.length && i < btitle.length; i++) {
+					var ai = alfabe.indexOf(atitle[i]);
+					var bi = alfabe.indexOf(btitle[i]);
+					if (ai !== bi) {
+						return ai - bi;
+					}
+				}
+			}
+
+			array.sort(turkcesiralama);
+			$.each(array, function(key, i) {
+				$('#pProvince').append('<option value="' + i.id + '">' + i.name + '</option>')
+			});
+		});
+	});
+
+	/* Tören alanları bölümünde il seçince */
+	$('#pProvince').on('change', function() {
+		var il = this.value; 
+		const areas = data.places[il].areas
+		$('#areas ul').html('');
+
+		/* O ilin tören alanları */
+		$('#areas').show();
+		$.each(areas, function(key, value) {
+			$('#areas ul').append('<li>' + value.ilce + ' / ' + value.mahalle + ' / ' + value.bolge + '</li>')
+		})
+
 	});
 
 	$(document).on('click', '.joinCTA', function () {
@@ -166,6 +219,7 @@ $(document).ready(function () {
 		return this.optional(element) || /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(value) || /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/.test(value);
 	}, "Lütfen geçerli bir e-posta adresi giriniz.");
 
+	/* Form post işlemi */
 	$('#form form').validate({
 		rules: {
 			name: {
@@ -181,6 +235,10 @@ $(document).ready(function () {
 			}
 		},
 		submitHandler: function () {
+			$('#form form #sbmt').prop('disabled', true);
+			$('#form form #sbmt').css('padding-right', 50);
+
+			$('#form form .loader').show()
 			var $form = $('#form form');
 
 			function getFormData($form) {
@@ -200,7 +258,18 @@ $(document).ready(function () {
 				dataType: 'json',
 				url: '/p',
 				data: JSON.stringify(obj),
+				error: function (xhr, status) {
+					$('#form form #sbmt').prop('disabled', false)
+					$('#form form #sbmt').css('padding-right', 30)
+					$('#form .error span').html('Bir sorunla karşılaşıldı.<br>Lütfen daha sonra tekrar deneyin.')
+					$('#form form').hide()
+					$('#form .error').show()
+					console.log(status)
+				},
 				success: function (data) {
+					$('#form form #sbmt').prop('disabled', false)
+					$('#form form #sbmt').css('padding-right', 30)
+					$('#form form .loader').hide()
 					JSON.stringify(data)
 					if (data.result == true) {
 						const res = {
@@ -209,25 +278,34 @@ $(document).ready(function () {
 							'placeToAdd': data.province
 						}
 						const lastCompleted = $('[data-id=' + res.placeToAdd + ']').attr('data-completed')
-						const curCompleted = parseInt(lastCompleted, 10) + 5
+						const curCompleted = parseInt(lastCompleted.replace('.', ''), 10) + 0
 						$('[data-id=' + res.placeToAdd + ']').attr('data-completed', curCompleted)
-						$('#province-detail .completed').html(curCompleted)
+						$('#province-detail .completed').html(numberWithCommas(curCompleted))
 						$('#form .message .name').html(res.name)
 						$('#form .message .area').html(res.area)
 						$('#form form').hide()
 						$('#form .message').show()
 					} else if (data.result == false) {
-						console.log(data.message)
 						$('#form .error span').html(data.message)
 						$('#form form').hide()
 						$('#form .error').show()
+						console.log(data.message)
+					} else {
+						$('#form form #sbmt').prop('disabled', false)
+						$('#form form #sbmt').css('padding-right', 30)
+						$('#form .error span').html('Bir sorunla karşılaşıldı.<br>Lütfen daha sonra tekrar deneyin.')
+						$('#form form').hide()
+						$('#form .error').show()
+						console.log(data)
 					}
 				}
 			})
 
-
 			return false;
-
 		}
 	});
 })
+
+function numberWithCommas(x) {
+	return x.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, '.');
+}
