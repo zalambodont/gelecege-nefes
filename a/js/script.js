@@ -154,8 +154,9 @@ $(document).ready(function() {
 			}
 
 			array.sort(turkcesiralama);
+			$('#pProvince').html('')
 			$.each(array, function(key, i) {
-				$('#pProvince').html('').append('<option value="' + i.id + '">' + i.name + '</option>')
+				$('#pProvince').append('<option value="' + i.id + '">' + i.name + '</option>')
 			});
 		});
 	});
@@ -280,7 +281,7 @@ $(document).ready(function() {
 							'placeToAdd': data.province
 						}
 						const lastCompleted = $('[data-id=' + res.placeToAdd + ']').attr('data-completed')
-						const curCompleted = parseInt(lastCompleted.replace('.', ''), 10) + 0
+						const curCompleted = parseInt(lastCompleted.replace('.', ''), 10) + 5
 						$('[data-id=' + res.placeToAdd + ']').attr('data-completed', curCompleted)
 						$('#province-detail .completed').html(numberWithCommas(curCompleted))
 						$('#form .message .name').html(res.name)
